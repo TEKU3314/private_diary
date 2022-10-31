@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}日記詳細　｜　Private Diary {% endblock %}
+
+{% block active_diary_list %}active{% endblock %}
+
+{% block  contents %}
+
+    <div class="container">
+        <div class="my-div-style w-100">
+            <h1 class="title"><span>{{ object.title }}</span></h1>
+
+            {% if object.title_photo %}
+            <div class="titleimg">
+                <img  src="{{ object.title_photo.url }}" width="1280" height="720">
+            </div>
+            {% endif %}
+        
+            <h2 class="subtitle">{{ object.subtitle }}</h2>
+
+            
+        
+            {% if object.item1 %}
+            <h2 class="line"></h2>
+            <div class="item">
+                <h2 class="itemtitle"><span>01</span>{{object.item1}}</h2>
+                {% if object.photo1 %}
+                <div class="itemimg">
+                    <img  src="{{ object.photo1.url }}" width="900" height="675">
+                </div>
+                {% endif %}
+                {% if object.content1 %}
+                <div class="itemcontent">
+                    <p>{{ object.content1 }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            
+        
+            {% if object.item2 %}
+            <h2 class="line"></h2>
+            <div class="item">
+                    <h2 class="itemtitle"><span>02</span>{{object.item2}}</h2>
+                    {% if object.photo2 %}
+                    <div class="itemimg">
+                        <img  src="{{ object.photo2.url }}" width="900" height="675">
+                    </div>
+                    {% endif %}
+                    {% if object.content2 %}
+                    <div class="itemcontent">
+                        {{ object.content2 }}
+                    </div>
+                    {% endif %}
+            </div>
+            {% endif %}
+
+            
+        
+            {% if object.item3 %}
+            <h2 class="line"></h2>
+            <div class="item">
+                <h2 class="itemtitle"><span>03</span>{{object.item3}}</h2>
+                {% if object.photo3 %}
+                <div class="itemimg">
+                    <img  src="{{ object.photo3.url }}" width="900" height="675">
+                </div>
+                {% endif %}
+                {% if object.content3 %}
+                <div class="itemcontent">
+                    {{ object.content3 }}
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            
+        
+            {% if object.item4 %}
+            <h2 class="line"></h2>
+            <div class="item">
+                <h2 class="itemtitle"><span>04</span>{{object.item4}}</h2>
+                {% if object.photo4 %}
+                <div class="itemimg">
+                    <img  src="{{ object.photo4.url }}" width="900" height="675">
+                </div>
+                {% endif %}
+                {% if object.content4 %}
+                <div class="itemcontent">
+                    {{ object.content4 }}
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            
+        
+            {% if object.item5 %}
+            <h2 class="line"></h2>
+            <div class="item">
+                <h2 class="itemtitle"><span>05</span>{{object.item5}}</h2>
+                {% if object.photo5 %}
+                <div class="itemimg">
+                    <img  src="{{ object.photo5.url }}" width="900" height="675">
+                </div>
+                {% endif %}
+                {% if object.content5 %}
+                <div class="itemcontent">
+                    {{ object.content5 }}
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            
+
+            {% if object.conclude_title %}
+            <h2 class="line"></h2>
+            <div class="conclude">
+                <h2 class="subtitle">{{ object.conclude_title }}</h2>
+                <div class="itemcontent">
+                    {{ object.conclude_text }}
+                </div>
+            </div>
+            {% endif %} 
+            
+            <h2 class="btn--orange"><span>このブログの作成者</span></h2>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 ">
+                        {% if object.user_photo %}
+                        <div class="p-4">
+                            <img class="rounded-circle iconblog" src="{{ object.user_photo.url }}" alt="">
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-6 ">
+                        <div class="p-4">
+                            <p class="tekuname">{{ object.user }}</p>
+                            <p class="tekuprofile">{{ object.user_message }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="author">
+                <p style="color:red;">作成日時：{{ object.created_at }} @{{ object.user}}</p>
+            </div>
+
+            <div class="button">
+                <a class="btn btn-success mt-5 mb-3" href="{% url 'diary:my_diary_update' object.pk %}">編集</a> 
+                <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'diary:my_diary_delete' object.pk %}">削除</a> 
+            </div>
+
+        </div>
+    </div>
+
+      
+{% endblock %}
